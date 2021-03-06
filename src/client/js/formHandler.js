@@ -2,8 +2,9 @@ function handleSubmit(event) {
     event.preventDefault()
 
     // check what text was put into the form field
-    let formText = document.getElementById('name').value
-    checkForName(formText)
+    let formText = document.getElementById('name').
+    
+    Client.checkForName(formText)
 
     fetch('http://localhost:8081/test')
     .then(res => {
@@ -15,4 +16,3 @@ function handleSubmit(event) {
 }
 
 export { handleSubmit }
-Client.checkForName(formText)
