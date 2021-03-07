@@ -3,11 +3,13 @@ const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
 var bodyParser = require('body-parser')
 var cors = require('cors')
+const dotenv = require('dotenv');
+dotenv.config();
 
 let baseURL = 'https://api.meaningcloud.com/sentiment-2.1?key=';
 const json = '&of=json&txt=';
 
-const end = '&model=General&lang=en';
+const end = '&model=general&lang=en';
 const fetch = require("node-fetch");
 
 const app = express()
