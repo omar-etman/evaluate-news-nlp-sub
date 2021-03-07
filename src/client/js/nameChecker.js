@@ -1,16 +1,9 @@
 function checkForName(inputText) {
+    const letters = /^[\.a-zA-Z0-9,!? ]*/
     console.log("::: Running checkForName :::", inputText);
-    let names = [
-        "Picard",
-        "Janeway",
-        "Kirk",
-        "Archer",
-        "Georgiou"
-    ]
-
-    if(names.includes(inputText)) {
-        alert("Welcome, Captain!")
-    }
+    
+    return !!inputText.match(letters)
+    
 }
 
 export { checkForName }

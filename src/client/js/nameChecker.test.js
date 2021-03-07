@@ -1,14 +1,12 @@
 import {checkForName} from './nameChecker.js';
 
-jest.spyOn(window, 'alert').mockImplementation(()=>{})
 
-test ("input name is excluded",()=>{
-    checkForName('mohsen')
-    expect(window.alert).not.toHaveBeenCalled()
+
+test ("input name is correct",()=>{
+    expect(checkForName('Picard')).toEqual(true)
 })
-
-test ("input name is included",()=>{
-    checkForName('Picard')
-    expect(window.alert).toHaveBeenCalledWith("Welcome, Captain!")
+test ("input name is incorrect",()=>{
+    expect(checkForName('12345@-')).toEqual(false)
+   
 })
 
