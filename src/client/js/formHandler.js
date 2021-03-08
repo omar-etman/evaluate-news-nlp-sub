@@ -6,6 +6,7 @@ function handleSubmit(event) {
 
     if (Client.checkForName(formText)){
         submitToServer(formText)
+        .then(data=>appendDataToResults(data))
    
     }else{
         alert('input invalid');
@@ -25,10 +26,31 @@ async function submitToServer(formText){
     body: JSON.stringify({formText}), 
     });
     try {
-    const data = await res.json();
+    const data = res.json();
+    return data;
     document.getElementById('results').innerHTML = data.message;
     }catch(error) {
     console.log('error',error);
     }
 }
 export {handleSubmit,submitToServer}
+
+function appendDataToResults(data) {
+    const list = document.createElement('ul');
+    const agreementNode = document.createElement('li');
+    const confidenceNode = document.createElement('li');
+    const ironyNode = document.createElement('li');
+    const subjectivityNode = document.createElement('li');
+    
+    agreementNode.textContent = data.agreement;
+    confidenceNode.textContent = data.confidence;
+    ironyNode.textContent = data.irony; 
+    subjectivityNode.textContent = data.subjectivity;
+    
+    list.appendChild(agreementNode)
+    list.appendChild(confidenceNode);
+    list.appendChild(ironyNode);
+    list.appendChild(subjectivityNode);
+    
+    document.getElementById('results').appendChild(list);
+}
