@@ -54,3 +54,4 @@ function appendDataToResults(data) {
     
     document.getElementById('results').appendChild(list);
 }
+
